@@ -2,6 +2,7 @@ import { GpsPosition } from '@/app/domain/gps/position';
 
 export type Subscriber = () => void;
 
+// Should be a middleware service that calls real backend and manage cache
 export class InMemoryDatabase {
   private subscribers: Subscriber[] = [];
   private gpsPositions: GpsPosition[] = [
