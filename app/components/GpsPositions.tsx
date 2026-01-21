@@ -67,7 +67,7 @@ export default function GpsPositions(props: GpsPositionsProps) {
                       <TableCell>{ position.name }</TableCell>
                       <TableCell>{ position.longitude }</TableCell>
                       <TableCell>{ position.latitude }</TableCell>
-                      <TableCell>
+                      <TableCell align="right">
                         <IconButton aria-label={ `edit-${ position.name }` } onClick={ () => onEdit(position.id) }>
                           <EditIcon fontSize="small"/>
                         </IconButton>

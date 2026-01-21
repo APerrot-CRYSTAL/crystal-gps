@@ -1,5 +1,5 @@
 export type GpsPosition = {
-  id: string;
+  id: number;
   name: string;
   longitude: number;
   latitude: number;
