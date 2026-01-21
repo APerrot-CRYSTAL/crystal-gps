@@ -22,7 +22,7 @@ export interface CreateEditGpsPositionProps {
   onSave: (position: GpsPosition) => void;
 }
 
-export default function CreateEditGpsPosition(props: CreateEditGpsPositionProps) {
+export default function CreateEditGpsPositionDialog(props: CreateEditGpsPositionProps) {
   const { open, editMode, positionToEdit, onClose, onSave } = props;
 
   const [step, setStep] = useState(0);

@@ -4,8 +4,10 @@ import { Container, Stack } from '@mui/material';
 import GpsPositions from '@/app/components/GpsPositions';
 import positionStore from '@/app/infra/database';
 import React, { useState } from 'react';
-import CreateEditGpsPosition from '@/app/components/CreateEditGpsPosition';
+import CreateEditGpsPositionDialog from '@/app/components/CreateEditGpsPositionDialog';
 import { GpsPosition } from '@/app/domain/gps/position';
+import DistanceCalculationDialog from '@/app/components/DistanceCalculationDialog';
+import { positions } from '@mui/system';
 
 const usePositions = () => {
   return React.useSyncExternalStore(
@@ -18,23 +20,25 @@ const usePositions = () => {
 export default function Home() {
   const gpsPositions = usePositions();
 
-  const [showCreateEditPosition, setShowCreateEditPosition] = useState(false);
+  const [showCreateEditPositionDialog, setShowCreateEditPositionDialog] = useState(false);
   const [positionToEditId, setPositionToEditId] = useState<number | null>(null);
   const [createEditDialogKey, setCreateEditDialogKey] = useState(0);
 
+  const [showCalculateDialog, setShowCalculateDialog] = useState(false);
+
   const onCreate = () => {
     setPositionToEditId(null);
-    setShowCreateEditPosition(true);
+    setShowCreateEditPositionDialog(true);
   }
 
   const onSave = (position: GpsPosition) => {
     positionStore.addOrUpdatePosition(position);
-    setShowCreateEditPosition(false);
+    setShowCreateEditPositionDialog(false);
   }
 
   const onEdit = (id: number) => {
     setPositionToEditId(id);
-    setShowCreateEditPosition(true);
+    setShowCreateEditPositionDialog(true);
   }
 
   const onDelete = (id: number) => {
@@ -42,8 +46,16 @@ export default function Home() {
   }
 
   const onClose = () => {
-    setShowCreateEditPosition(false);
+    setShowCreateEditPositionDialog(false);
     setPositionToEditId(null);
+  }
+
+  const onOpenCalculateDialog = () => {
+    setShowCalculateDialog(true);
+  }
+
+  const onCloseCalculateDialog = () => {
+    setShowCalculateDialog(false);
   }
 
   return (
@@ -54,17 +66,25 @@ export default function Home() {
               onCreate={ onCreate }
               onEdit={ onEdit }
               onDelete={ onDelete }
+              onOpenCalculateDialog={ onOpenCalculateDialog }
           ></GpsPositions>
         </Stack>
         
-        <CreateEditGpsPosition
-            key={`${showCreateEditPosition ? 'open' : 'closed'}-${positionToEditId || 'new'}`}
-            open={showCreateEditPosition}
+        <CreateEditGpsPositionDialog
+            key={`${showCreateEditPositionDialog ? 'open' : 'closed'}-${positionToEditId || 'new'}`}
+            open={showCreateEditPositionDialog}
             editMode={positionToEditId !== null}
             positionToEdit={positionStore.getById(positionToEditId)}
             onClose={onClose}
             onSave={onSave}
-        ></CreateEditGpsPosition>
+        ></CreateEditGpsPositionDialog>
+
+        <DistanceCalculationDialog
+            open={showCalculateDialog}
+            positions={gpsPositions}
+            onClose={onCloseCalculateDialog}
+        >
+        </DistanceCalculationDialog>
       </Container>
   );
 }

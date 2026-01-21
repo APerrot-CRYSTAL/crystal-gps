@@ -23,10 +23,11 @@ export interface GpsPositionsProps {
   onEdit: (id: string) => void;
   onDelete: (id: string) => void;
   onCreate: () => void;
+  onOpenCalculateDialog: () => void;
 }
 
 export default function GpsPositions(props: GpsPositionsProps) {
-  const { positions, onEdit, onDelete, onCreate } = props;
+  const { positions, onEdit, onDelete, onCreate, onOpenCalculateDialog } = props;
 
   return (
       <Stack spacing={ 2 }>
@@ -39,6 +40,7 @@ export default function GpsPositions(props: GpsPositionsProps) {
                 <Button
                     variant="outlined"
                     disabled={ positions.length < 2 }
+                    onClick={ onOpenCalculateDialog }
                 >
                   Calculer une distance entre 2 positions
                 </Button>
