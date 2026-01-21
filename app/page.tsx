@@ -7,6 +7,8 @@ import { GpsPosition } from '@/app/domain/gps/position';
 const positions: GpsPosition[] = [];
 
 export default function Home() {
+  const onCreate = () => {}
+
   const onEdit = (id: string) => {}
 
   const onDelete = (id: string) => {}
@@ -16,6 +18,7 @@ export default function Home() {
       <Stack spacing={2}>
         <GpsPositions
             positions={positions}
+            onCreate={onCreate}
             onEdit={onEdit}
             onDelete={onDelete}
         ></GpsPositions>
