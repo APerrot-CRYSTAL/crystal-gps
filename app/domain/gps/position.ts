@@ -4,6 +4,10 @@ export type GpsPosition = {
   latitude: number;
 }
 
+export const generateIdFromPositionName = (position: GpsPosition) : string => {
+  return position.name.replace(/[^a-zA-Z ]/g, "").replace(/ /g,"_").toLowerCase()
+}
+
 // TODO revoir
 /*
 export function haversineKm(
