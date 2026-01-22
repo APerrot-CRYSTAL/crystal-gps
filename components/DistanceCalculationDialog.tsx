@@ -43,7 +43,7 @@ export default function DistanceCalculationDialog(props: DistanceCalculationProp
               <Select
                   labelId="position-a"
                   id="position-a-select"
-                  value={positionA}
+                  value={positionA.toString()}
                   label="Age"
                   onChange={ (event: SelectChangeEvent) => {
                     setPositionA(parseInt(event.target.value));
@@ -60,7 +60,7 @@ export default function DistanceCalculationDialog(props: DistanceCalculationProp
               <Select
                   labelId="position-b"
                   id="position-b-select"
-                  value={positionB}
+                  value={positionB.toString()}
                   label="Age"
                   onChange={ (event: SelectChangeEvent) => {
                     setPositionB(parseInt(event.target.value));

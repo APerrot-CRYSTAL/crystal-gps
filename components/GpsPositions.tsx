@@ -4,14 +4,15 @@ import { GpsPosition } from '@/domain/gps/position';
 import {
   Button,
   Card,
-  CardContent, Divider,
+  CardContent,
+  Divider,
   IconButton,
   Stack,
   Table,
   TableBody,
   TableCell,
   TableHead,
-  TableRow, Tooltip,
+  TableRow,
   Typography
 } from '@mui/material';
 import EditIcon from '@mui/icons-material/Edit';
@@ -20,8 +21,8 @@ import AddIcon from '@mui/icons-material/Add';
 
 export interface GpsPositionsProps {
   positions: GpsPosition[];
-  onEdit: (id: string) => void;
-  onDelete: (id: string) => void;
+  onEdit: (id: number) => void;
+  onDelete: (id: number) => void;
   onCreate: () => void;
   onOpenCalculateDialog: () => void;
 }

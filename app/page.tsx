@@ -7,7 +7,6 @@ import React, { useState } from 'react';
 import CreateEditGpsPositionDialog from '@/components/CreateEditGpsPositionDialog';
 import { GpsPosition } from '@/domain/gps/position';
 import DistanceCalculationDialog from '@/components/DistanceCalculationDialog';
-import { positions } from '@mui/system';
 
 const usePositions = () => {
   return React.useSyncExternalStore(
@@ -22,7 +21,6 @@ export default function Home() {
 
   const [showCreateEditPositionDialog, setShowCreateEditPositionDialog] = useState(false);
   const [positionToEditId, setPositionToEditId] = useState<number | null>(null);
-  const [createEditDialogKey, setCreateEditDialogKey] = useState(0);
 
   const [showCalculateDialog, setShowCalculateDialog] = useState(false);
 
