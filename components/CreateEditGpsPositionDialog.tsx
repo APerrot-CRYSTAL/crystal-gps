@@ -38,7 +38,7 @@ export default function CreateEditGpsPositionDialog(props: CreateEditGpsPosition
 
   return (
       <Dialog open={ open } onClose={ onClose } maxWidth="sm" fullWidth>
-        <DialogTitle sx={ { fontWeight: 800 } }>Create a position</DialogTitle>
+        <DialogTitle sx={ { fontWeight: 800 } }>{ editMode ? 'Mettre à jour' : 'Créer' } une position GPS</DialogTitle>
 
         <DialogContent>
           <Stepper activeStep={ step } sx={ { py: 2 } }>

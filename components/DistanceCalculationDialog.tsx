@@ -20,15 +20,15 @@ export interface DistanceCalculationProps {
 export default function DistanceCalculationDialog(props: DistanceCalculationProps) {
   const { open, positions, onClose } = props;
 
-  const [positionA, setPositionA] = useState(-1);
-  const [positionB, setPositionB] = useState(-1);
+  const [positionA, setPositionA] = useState('');
+  const [positionB, setPositionB] = useState('');
   const [result, setResult] = useState<string>('-');
 
-  const canCalculate = positionA !== -1 && positionB !== -1;
+  const canCalculate = positionA !== '' && positionB !== '';
 
   const calculate = () => {
-    const gpsPositionA = positions.find(p => p.id === positionA);
-    const gpsPositionB = positions.find(p => p.id === positionB);
+    const gpsPositionA = positions.find(p => p.id === Number(positionA));
+    const gpsPositionB = positions.find(p => p.id === Number(positionB));
     const calculation = calculateDistanceBetweenTwoGpsPositions(gpsPositionA!, gpsPositionB!)
     setResult(calculation.toFixed(2) + ' km');
   }
@@ -43,14 +43,15 @@ export default function DistanceCalculationDialog(props: DistanceCalculationProp
               <Select
                   labelId="position-a"
                   id="position-a-select"
-                  value={positionA.toString()}
-                  label="Age"
+                  value={positionA}
+                  label="Position A"
                   onChange={ (event: SelectChangeEvent) => {
-                    setPositionA(parseInt(event.target.value));
+                    setPositionA(event.target.value);
                   } }
               >
+                <MenuItem value="">-</MenuItem>
                 {positions.map(position => (
-                    <MenuItem key={position.id} value={position.id}>{ position.name } ({ position.longitude }, { position.latitude })</MenuItem>
+                    <MenuItem key={position.id} value={String(position.id)}>{ position.name } ({ position.longitude }, { position.latitude })</MenuItem>
                 ))}
               </Select>
             </FormControl>
@@ -60,14 +61,15 @@ export default function DistanceCalculationDialog(props: DistanceCalculationProp
               <Select
                   labelId="position-b"
                   id="position-b-select"
-                  value={positionB.toString()}
-                  label="Age"
+                  value={positionB}
+                  label="Position B"
                   onChange={ (event: SelectChangeEvent) => {
-                    setPositionB(parseInt(event.target.value));
+                    setPositionB(event.target.value);
                   } }
               >
+                <MenuItem value="">-</MenuItem>
                 {positions.map(position => (
-                    <MenuItem key={position.id} value={position.id}>{ position.name } ({ position.longitude }, { position.latitude })</MenuItem>
+                    <MenuItem key={position.id} value={String(position.id)}>{ position.name } ({ position.longitude }, { position.latitude })</MenuItem>
                 ))}
               </Select>
             </FormControl>
