@@ -1,4 +1,4 @@
-import { calculateDistanceBetweenTwoGpsPositions } from '@/app/domain/gps/position';
+import { calculateDistanceBetweenTwoGpsPositions } from '@/domain/gps/position';
 
 describe('GPS position', () => {
   describe('calculate distance between two positions using haversine formula', () => {

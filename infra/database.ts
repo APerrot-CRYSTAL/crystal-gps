@@ -1,4 +1,4 @@
-import { GpsPosition } from '@/app/domain/gps/position';
+import { GpsPosition } from '@/domain/gps/position';
 
 export type Subscriber = () => void;
 

@@ -1,12 +1,12 @@
 'use client';
 
 import { Container, Stack } from '@mui/material';
-import GpsPositions from '@/app/components/GpsPositions';
-import positionStore from '@/app/infra/database';
+import GpsPositions from '@/components/GpsPositions';
+import positionStore from '@/infra/database';
 import React, { useState } from 'react';
-import CreateEditGpsPositionDialog from '@/app/components/CreateEditGpsPositionDialog';
-import { GpsPosition } from '@/app/domain/gps/position';
-import DistanceCalculationDialog from '@/app/components/DistanceCalculationDialog';
+import CreateEditGpsPositionDialog from '@/components/CreateEditGpsPositionDialog';
+import { GpsPosition } from '@/domain/gps/position';
+import DistanceCalculationDialog from '@/components/DistanceCalculationDialog';
 import { positions } from '@mui/system';
 
 const usePositions = () => {

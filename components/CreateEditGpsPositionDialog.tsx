@@ -11,7 +11,7 @@ import {
   TextField, Typography
 } from '@mui/material';
 import { useState } from 'react';
-import { GpsPosition } from '@/app/domain/gps/position';
+import { GpsPosition } from '@/domain/gps/position';
 import SaveIcon from '@mui/icons-material/Save';
 
 export interface CreateEditGpsPositionProps {

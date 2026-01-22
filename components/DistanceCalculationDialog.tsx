@@ -1,4 +1,4 @@
-import { calculateDistanceBetweenTwoGpsPositions, GpsPosition } from '@/app/domain/gps/position';
+import { calculateDistanceBetweenTwoGpsPositions, GpsPosition } from '@/domain/gps/position';
 import {
   Button,
   Dialog,

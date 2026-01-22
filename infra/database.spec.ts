@@ -1,4 +1,4 @@
-import { InMemoryDatabase } from '@/app/infra/database';
+import { InMemoryDatabase } from '@/infra/database';
 
 describe('Database', () => {
   test('should get positions', () => {
